@@ -13,8 +13,8 @@ wordsToHexString :: [Word8] -> String
 wordsToHexString = Char8.unpack . Base16.encode . ByteString.pack
 
 xorHexStrings :: String -> String -> String
-xorHexStrings s1 s2 = wordsToHexString (zipWith xor (hexStringToWords s1) (hexStringToWords s2))
+xorHexStrings s1 s2 = wordsToHexString $ zipWith xor (hexStringToWords s1) (hexStringToWords s2)
 
 main = do
     args <- getArgs
-    print (xorHexStrings (args !! 0) (args !! 1))
+    print $ xorHexStrings (args !! 0) (args !! 1)
